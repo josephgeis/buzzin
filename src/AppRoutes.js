@@ -14,7 +14,7 @@ function AppRoutes() {
       <Route path="/play" element={<GamePlayerView />} />
       <Route path="/admin" element={<GameAdminView />} />
       // TODO: auto join
-      <Route path="/:gamePin" element={<GamePinEntryView />} />
+      <Route path="/:defaultGamePin" element={<GamePinEntryView />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
