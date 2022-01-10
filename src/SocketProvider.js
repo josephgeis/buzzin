@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useRef } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import io from "socket.io-client";
 
@@ -6,13 +6,13 @@ const SocketContext = createContext(null);
 
 export { SocketContext };
 
-const useSocket = () => useContext(SocketContext).current;
+const useSocket = () => useContext(SocketContext);
 
 export { useSocket };
 
 function SocketProvider({ children }) {
   const dispatch = useDispatch();
-  let socketRef = useRef(null);
+  let [socket, setSocket] = useState(null);
 
   useEffect(() => {
     let socket = io();
@@ -26,7 +26,7 @@ function SocketProvider({ children }) {
       dispatch({ type: "game/setGameData", payload: game });
     });
 
-    socketRef.current = socket;
+    setSocket(socket);
 
     return () => {
       socket.disconnect();
@@ -34,9 +34,7 @@ function SocketProvider({ children }) {
   }, []);
 
   return (
-    <SocketContext.Provider value={socketRef}>
-      {children}
-    </SocketContext.Provider>
+    <SocketContext.Provider value={socket}>{children}</SocketContext.Provider>
   );
 }
 
