@@ -2,11 +2,13 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { useSocket } from "./SocketProvider";
+import { useTitle } from "./utils";
 
 function GameCreateView() {
   const navigate = useNavigate();
   const socket = useSocket();
   const dispatch = useDispatch();
+  useTitle("Create Game - Buzz-In");
 
   let [gameName, setGameName] = useState("");
 

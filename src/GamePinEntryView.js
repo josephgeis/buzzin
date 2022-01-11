@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router";
 import { useSocket } from "./SocketProvider";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useTitle } from "./utils";
 
 function GamePinEntryView() {
   const dispatch = useDispatch();
@@ -12,6 +13,8 @@ function GamePinEntryView() {
 
   let [gamePin, setGamePin] = useState(defaultGamePin);
   let [error, setError] = useState(null);
+
+  useTitle("Buzz-In");
 
   const setErrorMessage = (msg) => {
     setError(msg);

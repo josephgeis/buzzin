@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import QRCode from "react-qr-code";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router";
 import { useSocket } from "./SocketProvider";
-import { formatPin } from "./utils";
+import { formatPin, useTitle } from "./utils";
 
 function GameAdminView() {
   const socket = useSocket();
@@ -12,11 +12,11 @@ function GameAdminView() {
   const gameState = useSelector((state) => state.game);
   const { activePlayer, gamePin, gameName } = gameState;
 
+  useTitle(gameName ? `Hosting ${gameName} - Buzz-In` : "Buzz-In");
+
   let [resetting, setResetting] = useState(false);
 
   const backgroundColor = activePlayer ? "bg-teal-500" : "bg-blue-500";
-
-  useEffect(() => {}, []);
 
   const resetPlayer = (e) => {
     e.preventDefault();

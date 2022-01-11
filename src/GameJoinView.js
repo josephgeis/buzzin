@@ -2,11 +2,13 @@ import { useNavigate } from "react-router";
 import { useSocket } from "./SocketProvider";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useTitle } from "./utils";
 
 function GameJoinView() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const socket = useSocket();
+  useTitle("Buzz-In");
 
   const joinState = useSelector((state) => state.join);
 

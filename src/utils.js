@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 function formatPin(pin = "") {
   switch (pin.length) {
     case 6:
@@ -12,3 +14,11 @@ function formatPin(pin = "") {
 }
 
 export { formatPin };
+
+function useTitle(title) {
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
+}
+
+export { useTitle };

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router";
 import { useSocket } from "./SocketProvider";
-import { formatPin } from "./utils";
+import { formatPin, useTitle } from "./utils";
 
 function GamePlayerView() {
   const dispatch = useDispatch();
@@ -11,6 +11,10 @@ function GamePlayerView() {
   const { joinState, gameState } = useSelector((state) => {
     return { joinState: state.join, gameState: state.game };
   });
+  const gameName = gameState.gameName || joinState.gameName;
+  const gamePin = gameState.gamePin || joinState.gamePin;
+
+  useTitle(gameName ? `${gameName} - Buzz-In` : "Buzz-In");
 
   useEffect(() => {
     if (!joinState.gamePin || !joinState.playerName) {
@@ -88,15 +92,13 @@ function GamePlayerView() {
     <div className={"w-full h-full flex flex-col " + backgroundColor}>
       <div className="flex bg-white justify-between px-2 py-1">
         <p className="font-bold">Buzz-In</p>
-        <p className="font-bold">{gameState.gameName || "Loading..."}</p>
+        <p className="font-bold">{gameName || "Loading..."}</p>
       </div>
       <div className="flex flex-grow items-center justify-center text-white">
         {centerPanel}
       </div>
       <div className="flex bg-white justify-between px-2 py-1">
-        <p className="font-bold">
-          {formatPin(gameState.gamePin || joinState.gamePin)}
-        </p>
+        <p className="font-bold">{formatPin(gamePin)}</p>
         <p className="font-bold">{joinState.playerName}</p>
       </div>
     </div>
