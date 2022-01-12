@@ -52,10 +52,6 @@ function generateGamePin() {
 
 app.use(express.static(path.join(__dirname, "build")));
 
-app.get("/ping", function (req, res) {
-  return res.send("pong");
-});
-
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
@@ -65,6 +61,8 @@ io.on("connection", (socket) => {
 
   // MARK: Game join flow
   socket.on("game/checkPin", (data, res) => {
+    if (!res) res = () => {};
+
     console.log("game/checkPin", data.gamePin);
 
     let game = games[data.gamePin];
@@ -80,6 +78,8 @@ io.on("connection", (socket) => {
   });
 
   socket.on("game/join", (data, res) => {
+    if (!res) res = () => {};
+
     console.log("game/join", data);
 
     let game = games[data.gamePin];
@@ -105,6 +105,8 @@ io.on("connection", (socket) => {
 
   // MARK: Game create flow
   socket.on("game/create", (data, res) => {
+    if (!res) res = () => {};
+
     // Create a new game
     console.log("game/create", data);
 
@@ -126,6 +128,8 @@ io.on("connection", (socket) => {
   });
 
   socket.on("game/buzz", (data, res) => {
+    if (!res) res = () => {};
+
     console.log("game/buzz", data);
 
     let game = games[socket.data.gamePin];
@@ -151,6 +155,8 @@ io.on("connection", (socket) => {
   });
 
   socket.on("game/reset", (data, res) => {
+    if (!res) res = () => {};
+
     console.log("game/reset", data);
 
     let game = games[socket.data.hostedGame];
