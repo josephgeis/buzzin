@@ -4,7 +4,7 @@ import QRCode from "react-qr-code";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router";
 import { useSocket } from "./SocketProvider";
-import { formatPin, useTitle } from "./utils";
+import { formatPin, useThemeColor, useTitle } from "./utils";
 
 function GameAdminView() {
   const socket = useSocket();
@@ -13,6 +13,7 @@ function GameAdminView() {
   const { activePlayer, gamePin, gameName } = gameState;
 
   useTitle(gameName ? `Hosting ${gameName} - Buzz-In` : "Buzz-In");
+  useThemeColor("#ffffff");
 
   let [resetting, setResetting] = useState(false);
 

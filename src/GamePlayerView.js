@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router";
 import { useSocket } from "./SocketProvider";
-import { formatPin, useTitle } from "./utils";
+import { formatPin, useThemeColor, useTitle } from "./utils";
 
 function GamePlayerView() {
   const dispatch = useDispatch();
@@ -15,6 +15,7 @@ function GamePlayerView() {
   const gamePin = gameState.gamePin || joinState.gamePin;
 
   useTitle(gameName ? `${gameName} - Buzz-In` : "Buzz-In");
+  useThemeColor("#ffffff");
 
   useEffect(() => {
     if (!joinState.gamePin || !joinState.playerName) {

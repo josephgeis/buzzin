@@ -2,7 +2,8 @@ import { useNavigate, useParams } from "react-router";
 import { useSocket } from "./SocketProvider";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useTitle } from "./utils";
+import { useThemeColor, useTitle } from "./utils";
+import Footer from "./Footer";
 
 function GamePinEntryView() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function GamePinEntryView() {
   let [error, setError] = useState(null);
 
   useTitle("Buzz-In");
+  useThemeColor("#a855f7");
 
   const setErrorMessage = (msg) => {
     setError(msg);
@@ -85,6 +87,7 @@ function GamePinEntryView() {
           Create Game
         </button>
       </div>
+      <Footer />
     </div>
   );
 }

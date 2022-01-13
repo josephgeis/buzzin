@@ -2,13 +2,16 @@ import { useNavigate } from "react-router";
 import { useSocket } from "./SocketProvider";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useTitle } from "./utils";
+import { useThemeColor, useTitle } from "./utils";
+import Footer from "./Footer";
 
 function GameJoinView() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const socket = useSocket();
+
   useTitle("Buzz-In");
+  useThemeColor("#a855f7");
 
   const joinState = useSelector((state) => state.join);
 
@@ -53,6 +56,7 @@ function GameJoinView() {
           </button>
         </form>
       </div>
+      <Footer />
     </div>
   );
 }

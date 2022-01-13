@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
+import Footer from "./Footer";
 import { useSocket } from "./SocketProvider";
-import { useTitle } from "./utils";
+import { useThemeColor, useTitle } from "./utils";
 
 function GameCreateView() {
   const navigate = useNavigate();
   const socket = useSocket();
   const dispatch = useDispatch();
+
   useTitle("Create Game - Buzz-In");
+  useThemeColor("#14b8a6");
 
   let [gameName, setGameName] = useState("");
 
@@ -71,6 +74,7 @@ function GameCreateView() {
           Join Game
         </button>
       </div>
+      <Footer />
     </div>
   );
 }

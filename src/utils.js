@@ -22,3 +22,13 @@ function useTitle(title) {
 }
 
 export { useTitle };
+
+function useThemeColor(color) {
+  useEffect(() => {
+    document
+      .querySelector('meta[name="theme-color"]')
+      .setAttribute("content", color);
+  }, [color]);
+}
+
+export { useThemeColor };
