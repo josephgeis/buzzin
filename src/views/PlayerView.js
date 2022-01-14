@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router";
-import { useSocket } from "./SocketProvider";
-import { formatPin, useThemeColor, useTitle } from "./utils";
+import { useSocket } from "../SocketProvider";
+import { formatPin, useThemeColor, useTitle } from "../utils";
 
-function GamePlayerView() {
+function PlayerView() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const socket = useSocket();
@@ -106,4 +106,4 @@ function GamePlayerView() {
   );
 }
 
-export default GamePlayerView;
+export default PlayerView;

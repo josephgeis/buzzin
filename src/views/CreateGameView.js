@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-import Footer from "./Footer";
-import { useSocket } from "./SocketProvider";
-import { useThemeColor, useTitle } from "./utils";
+import Footer from "../components/Footer";
+import { useSocket } from "../SocketProvider";
+import { useThemeColor, useTitle } from "../utils";
 
-function GameCreateView() {
+function CreateGameView() {
   const navigate = useNavigate();
   const socket = useSocket();
   const dispatch = useDispatch();
@@ -79,4 +79,4 @@ function GameCreateView() {
   );
 }
 
-export default GameCreateView;
+export default CreateGameView;

@@ -4,7 +4,7 @@ import store from "./store";
 
 import AppRoutes from "./AppRoutes";
 import SocketProvider from "./SocketProvider";
-import LoadingOverlay from "./LoadingOverlay";
+import LoadingOverlay from "./components/LoadingOverlay";
 
 function App() {
   const isLoading = useSelector((state) => state.app.isLoading);

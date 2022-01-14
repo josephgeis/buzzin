@@ -3,10 +3,10 @@ import { useState } from "react";
 import QRCode from "react-qr-code";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router";
-import { useSocket } from "./SocketProvider";
-import { formatPin, useThemeColor, useTitle } from "./utils";
+import { useSocket } from "../SocketProvider";
+import { formatPin, useThemeColor, useTitle } from "../utils";
 
-function GameAdminView() {
+function AdminView() {
   const socket = useSocket();
   const dispatch = useDispatch();
   const gameState = useSelector((state) => state.game);
@@ -79,4 +79,4 @@ function GameAdminView() {
   );
 }
 
-export default GameAdminView;
+export default AdminView;

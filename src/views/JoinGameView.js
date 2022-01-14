@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router";
-import { useSocket } from "./SocketProvider";
+import { useSocket } from "../SocketProvider";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useThemeColor, useTitle } from "./utils";
-import Footer from "./Footer";
+import { useThemeColor, useTitle } from "../utils";
+import Footer from "../components/Footer";
 
-function GameJoinView() {
+function JoinGameView() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const socket = useSocket();
@@ -61,4 +61,4 @@ function GameJoinView() {
   );
 }
 
-export default GameJoinView;
+export default JoinGameView;
