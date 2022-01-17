@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import FullScreenLayout from "../layouts/FullScreenLayout";
+import ReactGA from "react-ga4";
 import { useSocket } from "../SocketProvider";
 import { useThemeColor, useTitle } from "../utils";
 
@@ -30,6 +31,14 @@ function CreateGameView() {
             gameName: res.gameName,
           },
         });
+
+        if (process.env.REACT_APP_ENABLE_GA === "true") {
+          ReactGA.event({
+            category: "Buzz-In",
+            action: "Create Game",
+          });
+        }
+
         navigate("/admin");
       }
     });
