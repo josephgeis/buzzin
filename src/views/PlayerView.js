@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router";
+import ReactGA from "react-ga4";
 import { useSocket } from "../SocketProvider";
 import { formatPin, useThemeColor, useTitle } from "../utils";
 
@@ -37,6 +38,13 @@ function PlayerView() {
         }
 
         dispatch({ type: "game/setGameData", payload: res });
+
+        if (process.env.REACT_APP_ENABLE_GA === "true") {
+          ReactGA.event({
+            category: "Buzz-In",
+            action: "Join Game",
+          });
+        }
       }
     );
 
