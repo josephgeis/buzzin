@@ -18,6 +18,12 @@ function CreateGameView() {
 
   const createGame = (e) => {
     e.preventDefault();
+
+    if (!gameName) {
+      return;
+      // TODO: show error
+    }
+
     dispatch({ type: "loading/start" });
     socket.emit("game/create", { gameName }, (res) => {
       dispatch({ type: "loading/stop" });

@@ -27,6 +27,12 @@ function HomeView() {
 
   const checkGamePin = (e) => {
     e.preventDefault();
+
+    if (!gamePin) {
+      return;
+      // TODO: show error
+    }
+
     dispatch({ type: "loading/start" });
     socket.emit("game/checkPin", { gamePin }, (res) => {
       dispatch({ type: "loading/stop" });

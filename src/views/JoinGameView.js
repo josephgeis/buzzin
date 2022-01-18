@@ -19,6 +19,12 @@ function JoinGameView() {
 
   const openGamePlayer = (e) => {
     e.preventDefault();
+
+    if (!playerName) {
+      return;
+      // TODO: show error
+    }
+
     dispatch({ type: "loading/start" });
     dispatch({ type: "join/setPlayerName", payload: playerName });
     navigate("/play");
